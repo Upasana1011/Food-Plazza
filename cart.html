@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+</head>
+<body>
+    <h4>total price:<div id="total" style="display: inline-block;"></div></h4>
+    <button id="check">Check Out</button>
+</body>
+</html>
+<script>
+    var cart=JSON.parse(localStorage.getItem("fcart"));
+    console.log(cart);
+    var body=document.querySelector("body");
+    let box=document.createElement("div");
+    let price=document.getElementById("total")
+    display(cart);
+    function display(cart){
+        cart.map(function(item){
+            var h1=document.createElement("h4");
+            h1.textContent=item.num;
+            var h2=document.createElement("h3");
+            h2.textContent=item.name;
+            var h3=document.createElement("img");
+            h3.src=item.image;
+            h3.style.height="300px";
+          h3.style.width="400px";
+            var h4=document.createElement("h4");
+            h4.textContent=item.desp;
+            box.append(h1,h3,h2,h4);
+            body.append(box);
+
+
+        //     var totalcart=cart.reduce(function(a,c){
+        //         sum=a+Nummber(c.price);
+        //         return sum;
+        //     },0);
+        //     price.textContent=sum;
+         })
+    }
+    let out=document.getElementById("check");
+    out.addEventListener("click",function(){
+        console.log("checking")
+        window.location.href="checkout.html";
+    })
+</script>

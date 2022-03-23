@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout</title>
+</head>
+<body>
+        <h1>Check Out</h1>
+        <form id="form">
+        <input id="nm" type="text" placeholder="enter name" requied/><br/>
+        <input id="no" type="number" placeholder="enter number" required/><br/>
+        <input id="add" type="text" placeholder="enter address" required/><br/>
+        <input id="pin" type="text" placeholder="enter pincode" required/><br/><br/>
+        <input type="submit" />
+      </form><br/><br/>
+      <!-- <button id="btn">Place Order</button> -->
+</body>
+</html>
+<script>
+     document.querySelector("form").addEventListener("submit",adding);
+    // document.getElementById("btn").addEventListener("click",function(){
+        function showing(){
+          setTimeout(frst,0);
+          setTimeout(sec,3000);
+          setTimeout(th,8000);
+          setTimeout(four,10000);
+          setTimeout(fiv,12000);
+    // });
+        }
+     function frst(){
+         alert("Your order is accepted ")
+         
+     }
+     function sec(){
+         alert("Your order is being cooked ")
+         
+     }
+     function th(){
+         alert("Your order is ready ")
+         
+     }
+     function four(){
+         alert("Order out for delivery ")
+         
+     }
+     function fiv(){
+         alert("Order delivered ")
+         
+     }
+     var chcart=JSON.parse(localStorage.getItem("checkcart"))||[];
+    function adding(e){
+        e.preventDefault();
+       let nm=document.getElementById("nm").value;
+       let no=document.getElementById("no").value;
+       let add=document.getElementById("add").value;
+       let pin=document.getElementById("pin").value;
+         
+      var list={
+          name:nm,
+          number:no,
+          address:add,
+          pincode:pin
+      }
+      chcart.push(list);
+      localStorage.setItem("checkcart",JSON.stringify(chcart));
+      console.log(chcart);
+    if(nm.length>1&&no.length>1&&add.length>1&&pin.length>1){
+        showing();
+    }
+    else alert("fill all details")
+
+    }
+</script>
